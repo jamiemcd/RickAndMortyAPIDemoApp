@@ -60,7 +60,7 @@
 		CE52A6AC279DE4610019319C /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		CE52A6AE279DE46E0019319C /* EpisodeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailView.swift; sourceTree = "<group>"; };
 		CE52A6B0279F56140019319C /* EpisodeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeRow.swift; sourceTree = "<group>"; };
-		CEB4851727AF7665001B0BB5 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterCell.swift; path = RickAndMortyAPIDemo/View/CharacterCell.swift; sourceTree = "<group>"; };
+		CEB4851727AF7665001B0BB5 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		CEE3D79827823E490078F12A /* Rick & Morty API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick & Morty API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE3D79B27823E490078F12A /* RickAndMortyAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPIDemoApp.swift; sourceTree = "<group>"; };
 		CEE3D79D27823E490078F12A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 		CEE3D78F27823E490078F12A = {
 			isa = PBXGroup;
 			children = (
-				CEB4851727AF7665001B0BB5 /* CharacterCell.swift */,
 				CEE3D79A27823E490078F12A /* RickAndMortyAPIDemo */,
 				CEE3D7AB27823E4A0078F12A /* RickAndMortyAPIDemoTests */,
 				CEE3D7B527823E4A0078F12A /* RickAndMortyAPIDemoUITests */,
@@ -169,6 +168,7 @@
 		CEE3D7C727823E790078F12A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CEB4851727AF7665001B0BB5 /* CharacterCell.swift */,
 				CEE3D79D27823E490078F12A /* MainView.swift */,
 				CEE3D7D827826F940078F12A /* CharactersList.swift */,
 				CE4AA6062784C57E00D188F0 /* CharacterDetailView.swift */,
