@@ -12,19 +12,13 @@ struct EpisodesList: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
-            List(viewModel.episodes) { episode in
-                NavigationLink(tag: episode, selection: $viewModel.episodeListSelection) {
-                    EpisodeDetailView(episode: episode)
-                } label: {
-                    VStack(alignment: .leading) {
-                        Text(episode.name)
-                        Text(episode.code)
-                    }
+        NavigationStack {
+            List(viewModel.filteredEpisodes) { episode in
+                EpisodeRow(episode: episode) {
+                    viewModel.selectEpisode(withId: episode.id)
                 }
             }
             .navigationTitle("Episodes")
-            Text("Select a location")
         }
         .tabItem {
             Label("Episodes", systemImage: "tv")

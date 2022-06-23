@@ -12,16 +12,13 @@ struct LocationsList: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
-            List(viewModel.locations) { location in
-                NavigationLink(tag: location, selection: $viewModel.locationListSelection) {
-                    LocationDetailView(location: location)
-                } label: {
-                    Text(location.name)
+        NavigationStack {
+            List(viewModel.filteredLocations) { location in
+                LocationRow(location: location) {
+                    viewModel.selectLocation(withID: location.id)
                 }
             }
             .navigationTitle("Locations")
-            Text("Select a location")
         }
         .tabItem {
             Label("Locations", systemImage: "globe.americas")
