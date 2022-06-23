@@ -26,9 +26,10 @@ struct CharacterCell: View {
                         ProgressView()
                     }
             }
-
             VStack(alignment: .center) {
-                Text(character.name).multilineTextAlignment(.center)
+                Text(character.name)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.primary)
                 if showEpisodeCount {
                     let episodesCount = character.episodes.count
                     if episodesCount == 1 {
