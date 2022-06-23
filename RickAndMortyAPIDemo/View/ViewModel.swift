@@ -7,26 +7,29 @@
 
 import Foundation
 import UIKit.UIImage
+import SwiftUI
 
 @MainActor
 class ViewModel: ObservableObject {
     
     // MARK: Internal Properties
     
-    var charactersListSearchText = "" {
+    var searchText = "" {
         didSet {
             updateFilteredCharacters()
+            updateFilteredLocations()
+            updateFilteredEpisodes()
         }
     }
-    
+        
     @Published
     var filteredCharacters: [Character] = []
     
     @Published
-    var locations: [Location] = []
+    var filteredLocations: [Location] = []
     
     @Published
-    var episodes: [Episode] = []
+    var filteredEpisodes: [Episode] = []
     
     @Published
     var tabViewSelection: TabViewSelection = .characters
@@ -36,19 +39,35 @@ class ViewModel: ObservableObject {
         case locations
         case episodes
     }
-    
+        
     @Published
-    var characterListSelection: Character?
+    var rootModelItem: ModelItem?
     
+    enum ModelItem: Identifiable {
+        var id: String {
+            switch self {
+            case .character(let character):
+                return "character\(character.id)"
+            case .location(let location):
+                return "location\(location.id)"
+            case .episode(let episode):
+                return "episode\(episode.id)"
+            }
+        }
+        
+        case character(Character)
+        case location(Location)
+        case episode(Episode)
+    }
+        
     @Published
-    var locationListSelection: Location?
-    
-    @Published
-    var episodeListSelection: Episode?
-    
+    var navigationPath = NavigationPath()
+                
     // MARK: Private Properties
     
     private var characters: [Character] = []
+    private var locations: [Location] = []
+    private var episodes: [Episode] = []
     
     private lazy var cache: NSCache<NSString, UIImage> = {
         var cache = NSCache<NSString, UIImage>()
@@ -87,21 +106,63 @@ class ViewModel: ObservableObject {
         return array
     }
     
+    func locations(for ids:[Int]) -> [Location] {
+        var locationIds: [Int: Location] = [:]
+        for location in locations {
+            locationIds[location.id] = location
+        }
+        var array: [Location] = []
+        for id in ids {
+            if let location = locationIds[id] {
+                array.append(location)
+            }
+        }
+        return array
+    }
+    
     func selectTabView(_ tabViewSelection: TabViewSelection) {
         self.tabViewSelection = tabViewSelection
     }
     
     func selectCharacter(withID id: Int) {
-        self.characterListSelection = characters.first { $0.id == id }
+        if let character = characters.first(where: { $0.id == id }) {
+            if rootModelItem == nil {
+                rootModelItem = .character(character)
+            }
+            else {
+                navigationPath.append(character)
+            }
+        }
+    }
+    
+    func selectLocation(withID id: Int) {
+        if let location = locations.first(where: { $0.id == id }) {
+            if rootModelItem == nil {
+                rootModelItem = .location(location)
+            }
+            else {
+                navigationPath.append(location)
+            }
+        }
+        
     }
     
     func selectEpisode(withId id: Int) {
-        self.episodeListSelection = episodes.first{ $0.id == id }
+        if let episode = episodes.first(where: { $0.id == id }) {
+            if rootModelItem == nil {
+                rootModelItem = .episode(episode)
+            }
+            else {
+                navigationPath.append(episode)
+            }
+        }
+    }
+        
+    func removeRootModelItem() {
+        rootModelItem = nil
+        navigationPath = NavigationPath()
     }
     
-    func deselectCharacter() {
-        self.characterListSelection = nil
-    }
     
     func uiImage(for character: Character) -> UIImage? {
         let key = NSString(string: "\(character.id)")
@@ -145,15 +206,21 @@ class ViewModel: ObservableObject {
     
     func getLocations() async {
         locations = []
+        filteredLocations = []
         for await locationResponse in Cloud.sharedCloud.getLocationsStream() {
-            locations.append(contentsOf: Location.locations(from: [locationResponse]))
+            let array = Location.locations(from: [locationResponse])
+            locations.append(contentsOf: array)
+            updateFilteredLocations()
         }
     }
     
     func getEpisodes() async {
         episodes = []
+        filteredEpisodes = []
         for await episodeResponse in Cloud.sharedCloud.getEpisodesStream() {
-            episodes.append(contentsOf: Episode.episodes(from: [episodeResponse]))
+            let array = Episode.episodes(from: [episodeResponse])
+            episodes.append(contentsOf: array)
+            updateFilteredEpisodes()
         }
     }
     
@@ -167,23 +234,43 @@ class ViewModel: ObservableObject {
     func getAllLocations() async {
         if let locationResponses = try? await Cloud.sharedCloud.getLocations() {
             locations = Location.locations(from: locationResponses)
+            updateFilteredLocations()
         }
     }
     
     func getAllEpisodes() async {
         if let episodeResponses = try? await Cloud.sharedCloud.getEpisodes() {
             episodes = Episode.episodes(from: episodeResponses)
+            updateFilteredEpisodes()
         }
     }
     
     // MARK: Private Methods
     
     private func updateFilteredCharacters() {
-        if charactersListSearchText.isEmpty {
+        if searchText.isEmpty {
             filteredCharacters = characters
         }
         else {
-            filteredCharacters = characters.filter { $0.name.contains(charactersListSearchText) }
+            filteredCharacters = characters.filter { $0.name.contains(searchText) }
+        }
+    }
+    
+    private func updateFilteredLocations() {
+        if searchText.isEmpty {
+            filteredLocations = locations
+        }
+        else {
+            filteredLocations = locations.filter { $0.name.contains(searchText) }
+        }
+    }
+    
+    private func updateFilteredEpisodes() {
+        if searchText.isEmpty {
+            filteredEpisodes = episodes
+        }
+        else {
+            filteredEpisodes = episodes.filter { $0.name.contains(searchText) }
         }
     }
 }

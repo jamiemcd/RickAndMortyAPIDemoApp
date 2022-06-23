@@ -28,6 +28,9 @@ struct LocationDetailView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(characters) { character in
                         CharacterCell(character: character, showEpisodeCount: false)
+                            .onTapGesture{
+                                viewModel.selectCharacter(withID: character.id)
+                            }
                     }
                 }
             }
