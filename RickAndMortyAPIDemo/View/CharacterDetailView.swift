@@ -56,8 +56,14 @@ struct CharacterDetailView: View {
                 }
             }
             Section("Last Known Location") {
-                if let lastKnownLocation = character.lastKnownLocation {
-                    Text(lastKnownLocation.name)
+                if let lastKnownLocation = character.lastKnownLocation, let location = viewModel.locations(for: [lastKnownLocation.id]).first {
+                    // This is needed to get the normal disclosure indicator indicating a push to the next screen
+                    ZStack(alignment: .leading) {
+                        NavigationLink("") { EmptyView() }
+                        LocationRow(location: location) {
+                            viewModel.selectLocation(withID: location.id)
+                        }
+                    }
                 }
                 else {
                     Text("Unknown")
@@ -66,9 +72,10 @@ struct CharacterDetailView: View {
             Section("Episodes") {
                 let episodes = viewModel.episodes(for: character.episodes)
                 ForEach(episodes) { episode in
-                    EpisodeRow(episode: episode) {
-                        Task {
-                            viewModel.selectTabView(.episodes)
+                    // This is needed to get the normal disclosure indicator indicating a push to the next screen
+                    ZStack(alignment: .leading) {
+                        NavigationLink("") { EmptyView() }
+                        EpisodeRow(episode: episode) {
                             viewModel.selectEpisode(withId: episode.id)
                         }
                     }
