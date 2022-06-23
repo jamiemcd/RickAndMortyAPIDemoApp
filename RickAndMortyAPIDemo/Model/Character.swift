@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct Character: Identifiable {
+struct Character: Identifiable, Hashable {
+    
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     enum Status: String {
         case alive = "Alive"
