@@ -10,6 +10,7 @@ import SwiftUI
 struct CharacterCell: View {
     @EnvironmentObject var viewModel: ViewModel
     let character: Character
+    var imageHeight: CGFloat = 120
     var showEpisodeCount = true
     
     var body: some View {
@@ -17,7 +18,8 @@ struct CharacterCell: View {
             if let uiImage = viewModel.uiImage(for: character) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .frame(height: imageHeight)
             }
             else {
                 Color.clear
@@ -25,22 +27,23 @@ struct CharacterCell: View {
                     .overlay {
                         ProgressView()
                     }
+                    .frame(height: imageHeight)
             }
             VStack(alignment: .center) {
                 Text(character.name)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.primary)
+                    .font(.body)
                 if showEpisodeCount {
                     let episodesCount = character.episodes.count
                     if episodesCount == 1 {
-                        Text("1 episode").foregroundColor(.secondary)
+                        Text("1 episode").foregroundColor(.secondary).font(.subheadline)
                     }
                     else {
-                        Text("\(episodesCount) episodes").foregroundColor(.secondary)
+                        Text("\(episodesCount) episodes").foregroundColor(.secondary).font(.subheadline)
                     }
                 }
             }
-            .font(.body)
             .padding(.horizontal, 6.0)
         }
         .onAppear {
