@@ -25,34 +25,21 @@ struct MainView: View {
             await viewModel.getEpisodes()
         }
         .searchable(text: $viewModel.searchText)
-        .sheet(item: $viewModel.rootModelItem) { rootModelItem in
+        .sheet(item: $viewModel.rootModelItem, onDismiss: onDismiss) { rootModelItem in
             NavigationStack(path: $viewModel.navigationPath) {
                 Group {
                     switch rootModelItem {
                     case .character(let character):
                         CharacterDetailView(character: character)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .toolbar {
-                                Button("Done") {
-                                    onDismiss()
-                                }
-                            }
                     case .location(let location):
                         LocationDetailView(location: location)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .toolbar {
-                                Button("Done") {
-                                    onDismiss()
-                                }
-                            }
                     case .episode(let episode):
                         EpisodeDetailView(episode: episode)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .toolbar {
-                                Button("Done") {
-                                    onDismiss()
-                                }
-                            }
+                    }
+                }
+                .toolbar {
+                    Button("Done") {
+                        onDismiss()
                     }
                 }
                 .navigationDestination(for: Character.self) { character in
@@ -64,6 +51,7 @@ struct MainView: View {
                 .navigationDestination(for: Episode.self) { episode in
                     EpisodeDetailView(episode: episode)
                 }
+
             }
         }
     }
