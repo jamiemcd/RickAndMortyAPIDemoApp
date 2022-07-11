@@ -13,29 +13,25 @@ struct LocationDetailView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        // List was causing the cells in the Characters section to be cut off for some episodes. Switching to Form fixed this.
-        // It has something to do with the multiline Text in the CharacterCell and I think it is a SwiftUI bug.
-        Form {
-            Section("Type") {
-                Text(location.type)
-            }
-            Section("Dimension") {
-                Text(location.dimension)
-            }
-            Section("Residents") {
-                let characters = viewModel.characters(for: location.residents)
-                let columns = [GridItem(.adaptive(minimum: 120, maximum: 240), alignment: .top)]
-                LazyVGrid(columns: columns) {
-                    ForEach(characters) { character in
-                        CharacterCell(character: character, showEpisodeCount: false)
-                            .onTapGesture{
-                                viewModel.selectCharacter(withID: character.id)
-                            }
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text(location.name)
+                            .font(.largeTitle)
+                        DetailText(name: "Type", value: location.type, color: .purple)
+                        DetailText(name: "Dimension", value: location.dimension, color: .blue)
+                        DetailText(name: "Residents", value: "\(location.residents.count)", color: .red)
+                    }
+                    .padding()
+                    let cellWidth = CharactersGrid.cellWidth(for: geometry)
+                    let characters = viewModel.characters(for: location.residents)
+                    CharactersGrid(characters: characters, cellWidth: cellWidth) { characterID in
+                        viewModel.selectCharacter(withID: characterID)
                     }
                 }
             }
         }
-        .navigationTitle(location.name)
     }
 }
 

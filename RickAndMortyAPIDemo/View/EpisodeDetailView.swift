@@ -12,32 +12,30 @@ struct EpisodeDetailView: View {
     let episode: Episode
     
     @EnvironmentObject var viewModel: ViewModel
-        
+    
     var body: some View {
-        // List was causing the cells in the Characters section to be cut off for some episodes. Switching to Form fixed this.
-        // It has something to do with the multiline Text in the CharacterCell and I think it is a SwiftUI bug.
-        Form {
-            Section("Code") {
-                Text(episode.code)
-            }
-            Section("Air Date") {
-                Text(episode.formattedAirDate)
-            }
-            Section("Characters") {
-                let characters = viewModel.characters(for: episode.characters)
-                let columns = [GridItem(.adaptive(minimum: 120, maximum: 240), alignment: .top)]
-                LazyVGrid(columns: columns) {
-                    ForEach(characters) { character in
-                        CharacterCell(character: character, showEpisodeCount: false)
-                            .onTapGesture {
-                                viewModel.selectCharacter(withID: character.id)
-                            }
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text(episode.name)
+                            .font(.largeTitle)
+                        DetailText(name: "Code", value: episode.code, color: .purple)
+                        DetailText(name: "Air Date", value: episode.formattedAirDate, color: .blue)
+                        DetailText(name: "Characters Appearing", value: "\(episode.characters.count)", color: .red)
+                    }
+                    .padding()
+                    
+                    let cellWidth = CharactersGrid.cellWidth(for: geometry)
+                    let characters = viewModel.characters(for: episode.characters)
+                    CharactersGrid(characters: characters, cellWidth: cellWidth) { characterID in
+                        viewModel.selectCharacter(withID: characterID)
                     }
                 }
             }
         }
-        .navigationTitle(episode.name)
     }
+        
 }
 
 /*
