@@ -13,26 +13,21 @@ struct CharactersList: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                let columns = [GridItem(.adaptive(minimum: 150, maximum: 300), alignment: .top)]
-                LazyVGrid(columns: columns) {
-                    ForEach(viewModel.filteredCharacters) { character in
-                        CharacterCell(character: character).onTapGesture {
-                            viewModel.selectCharacter(withID: character.id)
-                        }
+            GeometryReader { geometry in
+                ScrollView {
+                    let cellWidth = CharactersGrid.cellWidth(for: geometry)
+                    CharactersGrid(characters: viewModel.filteredCharacters, cellWidth: cellWidth) { characterID in
+                        viewModel.selectCharacter(withID: characterID)
                     }
+                    .navigationTitle("Characters")
                 }
-                .navigationTitle("Characters")
             }
         }
         .tabItem {
             Label("Characters", systemImage: "person.3")
         }
     }
-    
-
 }
-
 
 
 /*
