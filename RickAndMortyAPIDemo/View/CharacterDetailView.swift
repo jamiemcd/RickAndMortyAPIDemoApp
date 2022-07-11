@@ -15,7 +15,7 @@ struct CharacterDetailView: View {
     var body: some View {
         List {
             Section {
-                VStack {
+                VStack(spacing: 4) {
                     if let uiImage = viewModel.uiImage(for: character) {
                         HStack {
                             Spacer()
@@ -30,6 +30,9 @@ struct CharacterDetailView: View {
                     else {
                         ProgressView()
                     }
+                    Text(character.name)
+                        .font(.largeTitle)
+                        .multilineTextAlignment(.center)
                 }
             }
             .listRowBackground(Color.clear)
@@ -69,7 +72,7 @@ struct CharacterDetailView: View {
                     Text("Unknown")
                 }
             }
-            Section("Episodes") {
+            Section("\(character.episodes.count) Episodes") {
                 let episodes = viewModel.episodes(for: character.episodes)
                 ForEach(episodes) { episode in
                     // This is needed to get the normal disclosure indicator indicating a push to the next screen
@@ -82,7 +85,6 @@ struct CharacterDetailView: View {
                 }
             }
         }
-        .navigationTitle(character.name)
     }
     
 
