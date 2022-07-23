@@ -96,7 +96,7 @@
 		CE7FF2B22873BC4E00067A18 /* CharactersGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersGrid.swift; sourceTree = "<group>"; };
 		CEAB62BA287B5C7900ABD0A7 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		CEAB62BC287C6D5800ABD0A7 /* DetailText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailText.swift; sourceTree = "<group>"; };
-		CEAB637A287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RickAndMortyAPIDemo (UIKit).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAB637A287CD72600ABD0A7 /* Rick (UIKit).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick (UIKit).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAB637C287CD72600ABD0A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEAB637E287CD72600ABD0A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CEAB6380287CD72600ABD0A7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		CEAB6391287CD92000ABD0A7 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		CEAB6393287CD92E00ABD0A7 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		CEB4851727AF7665001B0BB5 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
-		CEE3D79827823E490078F12A /* RickAndMortyAPIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyAPIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE3D79827823E490078F12A /* Morty (SwiftUI).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Morty (SwiftUI).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE3D79B27823E490078F12A /* RickAndMortyAPIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyAPIDemoApp.swift; sourceTree = "<group>"; };
 		CEE3D79D27823E490078F12A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CEE3D79F27823E4A0078F12A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		CEE3D7D6278265CB0078F12A /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		CEE3D7D827826F940078F12A /* CharactersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersList.swift; sourceTree = "<group>"; };
 		CEE3ECCD27852BB400C18E59 /* Cloud.InfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.InfoResponse.swift; sourceTree = "<group>"; };
-		CEF4B2B8287E134500466174 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = "RickAndMortyAPIDemo (UIKit)/View/ViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		CEF4B2B8287E134500466174 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = "Rick (UIKit)/View/ViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		CEF4B2C5287F206900466174 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		CEF4B2C7287F6E4700466174 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		CEF4B2C9287FAB6700466174 /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		CEAB637B287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit) */ = {
+		CEAB637B287CD72600ABD0A7 /* Rick (UIKit) */ = {
 			isa = PBXGroup;
 			children = (
 				CEAB637C287CD72600ABD0A7 /* AppDelegate.swift */,
@@ -194,7 +194,7 @@
 				CEAB6387287CD72700ABD0A7 /* LaunchScreen.storyboard */,
 				CEAB638A287CD72700ABD0A7 /* Info.plist */,
 			);
-			path = "RickAndMortyAPIDemo (UIKit)";
+			path = "Rick (UIKit)";
 			sourceTree = "<group>";
 		};
 		CEAB638E287CD77400ABD0A7 /* ViewControllers */ = {
@@ -216,10 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				CEAB6375287CD6BE00ABD0A7 /* Shared */,
-				CEE3D79A27823E490078F12A /* RickAndMortyAPIDemo */,
+				CEE3D79A27823E490078F12A /* Morty (SwiftUI) */,
+				CEAB637B287CD72600ABD0A7 /* Rick (UIKit) */,
 				CEE3D7AB27823E4A0078F12A /* RickAndMortyAPIDemoTests */,
 				CEE3D7B527823E4A0078F12A /* RickAndMortyAPIDemoUITests */,
-				CEAB637B287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit) */,
 				CEE3D79927823E490078F12A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,15 +227,15 @@
 		CEE3D79927823E490078F12A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEE3D79827823E490078F12A /* RickAndMortyAPIDemo.app */,
+				CEE3D79827823E490078F12A /* Morty (SwiftUI).app */,
 				CEE3D7A827823E4A0078F12A /* RickAndMortyAPIDemoTests.xctest */,
 				CEE3D7B227823E4A0078F12A /* RickAndMortyAPIDemoUITests.xctest */,
-				CEAB637A287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit).app */,
+				CEAB637A287CD72600ABD0A7 /* Rick (UIKit).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CEE3D79A27823E490078F12A /* RickAndMortyAPIDemo */ = {
+		CEE3D79A27823E490078F12A /* Morty (SwiftUI) */ = {
 			isa = PBXGroup;
 			children = (
 				CEE3D79B27823E490078F12A /* RickAndMortyAPIDemoApp.swift */,
@@ -243,7 +243,7 @@
 				CEE3D79F27823E4A0078F12A /* Assets.xcassets */,
 				CEE3D7A127823E4A0078F12A /* Preview Content */,
 			);
-			path = RickAndMortyAPIDemo;
+			path = "Morty (SwiftUI)";
 			sourceTree = "<group>";
 		};
 		CEE3D7A127823E4A0078F12A /* Preview Content */ = {
@@ -329,9 +329,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEAB6379287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit) */ = {
+		CEAB6379287CD72600ABD0A7 /* Rick (UIKit) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEAB638B287CD72700ABD0A7 /* Build configuration list for PBXNativeTarget "RickAndMortyAPIDemo (UIKit)" */;
+			buildConfigurationList = CEAB638B287CD72700ABD0A7 /* Build configuration list for PBXNativeTarget "Rick (UIKit)" */;
 			buildPhases = (
 				CEAB6376287CD72600ABD0A7 /* Sources */,
 				CEAB6377287CD72600ABD0A7 /* Frameworks */,
@@ -341,14 +341,14 @@
 			);
 			dependencies = (
 			);
-			name = "RickAndMortyAPIDemo (UIKit)";
+			name = "Rick (UIKit)";
 			productName = "RickAndMortyAPIDemo (UIKit)";
-			productReference = CEAB637A287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit).app */;
+			productReference = CEAB637A287CD72600ABD0A7 /* Rick (UIKit).app */;
 			productType = "com.apple.product-type.application";
 		};
-		CEE3D79727823E490078F12A /* RickAndMortyAPIDemo */ = {
+		CEE3D79727823E490078F12A /* Morty (SwiftUI) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEE3D7BC27823E4A0078F12A /* Build configuration list for PBXNativeTarget "RickAndMortyAPIDemo" */;
+			buildConfigurationList = CEE3D7BC27823E4A0078F12A /* Build configuration list for PBXNativeTarget "Morty (SwiftUI)" */;
 			buildPhases = (
 				CEE3D79427823E490078F12A /* Sources */,
 				CEE3D79527823E490078F12A /* Frameworks */,
@@ -358,9 +358,9 @@
 			);
 			dependencies = (
 			);
-			name = RickAndMortyAPIDemo;
+			name = "Morty (SwiftUI)";
 			productName = RickAndMortyAPIDemo;
-			productReference = CEE3D79827823E490078F12A /* RickAndMortyAPIDemo.app */;
+			productReference = CEE3D79827823E490078F12A /* Morty (SwiftUI).app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEE3D7A727823E4A0078F12A /* RickAndMortyAPIDemoTests */ = {
@@ -438,10 +438,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEE3D79727823E490078F12A /* RickAndMortyAPIDemo */,
+				CEE3D79727823E490078F12A /* Morty (SwiftUI) */,
 				CEE3D7A727823E4A0078F12A /* RickAndMortyAPIDemoTests */,
 				CEE3D7B127823E4A0078F12A /* RickAndMortyAPIDemoUITests */,
-				CEAB6379287CD72600ABD0A7 /* RickAndMortyAPIDemo (UIKit) */,
+				CEAB6379287CD72600ABD0A7 /* Rick (UIKit) */,
 			);
 		};
 /* End PBXProject section */
@@ -566,12 +566,12 @@
 /* Begin PBXTargetDependency section */
 		CEE3D7AA27823E4A0078F12A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEE3D79727823E490078F12A /* RickAndMortyAPIDemo */;
+			target = CEE3D79727823E490078F12A /* Morty (SwiftUI) */;
 			targetProxy = CEE3D7A927823E4A0078F12A /* PBXContainerItemProxy */;
 		};
 		CEE3D7B427823E4A0078F12A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEE3D79727823E490078F12A /* RickAndMortyAPIDemo */;
+			target = CEE3D79727823E490078F12A /* Morty (SwiftUI) */;
 			targetProxy = CEE3D7B327823E4A0078F12A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -598,7 +598,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6QZ9XG2QTM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "RickAndMortyAPIDemo (UIKit)/Info.plist";
+				INFOPLIST_FILE = "Rick (UIKit)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Rick (UIKit)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -628,7 +628,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6QZ9XG2QTM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "RickAndMortyAPIDemo (UIKit)/Info.plist";
+				INFOPLIST_FILE = "Rick (UIKit)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Rick (UIKit)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -771,7 +771,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyAPIDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Morty (SwiftUI)/Preview Content\"";
 				DEVELOPMENT_TEAM = 6QZ9XG2QTM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -788,7 +788,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiousfind.RickAndMortyAPIDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiousfind.RickAndMortyAPIDemoSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -803,7 +803,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RickAndMortyAPIDemo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Morty (SwiftUI)/Preview Content\"";
 				DEVELOPMENT_TEAM = 6QZ9XG2QTM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -820,7 +820,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiousfind.RickAndMortyAPIDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiousfind.RickAndMortyAPIDemoSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -907,7 +907,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEAB638B287CD72700ABD0A7 /* Build configuration list for PBXNativeTarget "RickAndMortyAPIDemo (UIKit)" */ = {
+		CEAB638B287CD72700ABD0A7 /* Build configuration list for PBXNativeTarget "Rick (UIKit)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEAB638C287CD72700ABD0A7 /* Debug */,
@@ -925,7 +925,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEE3D7BC27823E4A0078F12A /* Build configuration list for PBXNativeTarget "RickAndMortyAPIDemo" */ = {
+		CEE3D7BC27823E4A0078F12A /* Build configuration list for PBXNativeTarget "Morty (SwiftUI)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEE3D7BD27823E4A0078F12A /* Debug */,
