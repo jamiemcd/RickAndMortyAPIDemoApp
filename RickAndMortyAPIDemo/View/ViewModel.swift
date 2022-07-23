@@ -78,8 +78,8 @@ class ViewModel: ObservableObject {
     
     // MARK: Public Methods
     
-    func episodes(for ids:[Int]) -> [Episode] {
-        var episodeIds: [Int: Episode] = [:]
+    func episodes(for ids:[Episode.ID]) -> [Episode] {
+        var episodeIds: [Episode.ID: Episode] = [:]
         for episode in episodes {
             episodeIds[episode.id] = episode
         }
@@ -92,8 +92,8 @@ class ViewModel: ObservableObject {
         return array
     }
     
-    func characters(for ids:[Int]) -> [Character] {
-        var characterIds: [Int: Character] = [:]
+    func characters(for ids:[Character.ID]) -> [Character] {
+        var characterIds: [Character.ID: Character] = [:]
         for character in characters {
             characterIds[character.id] = character
         }
@@ -106,8 +106,8 @@ class ViewModel: ObservableObject {
         return array
     }
     
-    func locations(for ids:[Int]) -> [Location] {
-        var locationIds: [Int: Location] = [:]
+    func locations(for ids:[Location.ID]) -> [Location] {
+        var locationIds: [Location.ID: Location] = [:]
         for location in locations {
             locationIds[location.id] = location
         }
@@ -124,7 +124,7 @@ class ViewModel: ObservableObject {
         self.tabViewSelection = tabViewSelection
     }
     
-    func selectCharacter(withID id: Int) {
+    func selectCharacter(withID id: Character.ID) {
         if let character = characters.first(where: { $0.id == id }) {
             if rootModelItem == nil {
                 rootModelItem = .character(character)
@@ -135,7 +135,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func selectLocation(withID id: Int) {
+    func selectLocation(withID id: Location.ID) {
         if let location = locations.first(where: { $0.id == id }) {
             if rootModelItem == nil {
                 rootModelItem = .location(location)
@@ -147,7 +147,7 @@ class ViewModel: ObservableObject {
         
     }
     
-    func selectEpisode(withId id: Int) {
+    func selectEpisode(withId id: Episode.ID) {
         if let episode = episodes.first(where: { $0.id == id }) {
             if rootModelItem == nil {
                 rootModelItem = .episode(episode)

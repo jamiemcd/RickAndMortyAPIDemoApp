@@ -10,6 +10,7 @@ import SwiftUI
 struct CharactersGrid: View {
     var characters: [Character]
     var cellWidth = Constants.idealCellWidth
+    var showEpisodeCount = false
     var selectCharacterHandler: ((_ characterID: Int) -> Void)?
     
     private struct Constants {
@@ -21,7 +22,7 @@ struct CharactersGrid: View {
         let columns = [GridItem(.adaptive(minimum: cellWidth, maximum: cellWidth), spacing: Constants.cellSpacing, alignment: .top)]
         LazyVGrid(columns: columns) {
             ForEach(characters) { character in
-                CharacterCell(character: character, imageHeight: cellWidth, showEpisodeCount: false).onTapGesture {
+                CharacterCell(character: character, imageHeight: cellWidth, showEpisodeCount: showEpisodeCount).onTapGesture {
                     if let selectCharacterHandler = selectCharacterHandler {
                         selectCharacterHandler(character.id)
                     }

@@ -16,7 +16,7 @@ struct CharactersList: View {
             GeometryReader { geometry in
                 ScrollView {
                     let cellWidth = CharactersGrid.cellWidth(for: geometry)
-                    CharactersGrid(characters: viewModel.filteredCharacters, cellWidth: cellWidth) { characterID in
+                    CharactersGrid(characters: viewModel.filteredCharacters, cellWidth: cellWidth, showEpisodeCount: true) { characterID in
                         viewModel.selectCharacter(withID: characterID)
                     }
                     .navigationTitle("Characters")

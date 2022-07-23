@@ -31,7 +31,6 @@ struct CharacterCell: View {
             }
             VStack(alignment: .center) {
                 Text(character.name)
-                    .multilineTextAlignment(.center)
                     .foregroundColor(.primary)
                     .font(.body)
                 if showEpisodeCount {
@@ -45,6 +44,7 @@ struct CharacterCell: View {
                 }
             }
             .padding(.horizontal, 6.0)
+            .multilineTextAlignment(.center)
         }
         .onAppear {
             if !character.hasLocalImage {
