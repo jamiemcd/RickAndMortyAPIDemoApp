@@ -26,9 +26,9 @@ class ViewModel {
     
     // MARK: Private Properties
     
-    private var characters: [Character] = []
-    private var locations: [Location] = []
-    private var episodes: [Episode] = []
+    private var characters: [Character.ID: Character] = [:]
+    private var locations: [Location.ID: Location] = [:]
+    private var episodes: [Episode.ID: Episode] = [:]
     
     private lazy var cache: NSCache<NSString, UIImage> = {
         var cache = NSCache<NSString, UIImage>()
@@ -60,13 +60,9 @@ class ViewModel {
     }
     
     func episodes(for ids:[Episode.ID]) -> [Episode] {
-        var episodeIds: [Episode.ID: Episode] = [:]
-        for episode in episodes {
-            episodeIds[episode.id] = episode
-        }
         var array: [Episode] = []
         for id in ids {
-            if let episode = episodeIds[id] {
+            if let episode = episodes[id] {
                 array.append(episode)
             }
         }
@@ -74,13 +70,9 @@ class ViewModel {
     }
     
     func characters(for ids:[Character.ID]) -> [Character] {
-        var characterIds: [Character.ID: Character] = [:]
-        for character in characters {
-            characterIds[character.id] = character
-        }
         var array: [Character] = []
         for id in ids {
-            if let character = characterIds[id] {
+            if let character = characters[id] {
                 array.append(character)
             }
         }
@@ -88,13 +80,9 @@ class ViewModel {
     }
     
     func locations(for ids:[Location.ID]) -> [Location] {
-        var locationIds: [Location.ID: Location] = [:]
-        for location in locations {
-            locationIds[location.id] = location
-        }
         var array: [Location] = []
         for id in ids {
-            if let location = locationIds[id] {
+            if let location = locations[id] {
                 array.append(location)
             }
         }
@@ -120,9 +108,7 @@ class ViewModel {
             do {
                 let data = try await Cloud.sharedCloud.getData(imageURL)
                 try data.write(to: character.localImageURL)
-                if let index = self.characters.firstIndex(where: { $0.id == character.id }) {
-                    self.characters[index] = Character(id: character.id, name: character.name, status: character.status, species: character.species, type: character.type, gender: character.gender, origin: character.origin, lastKnownLocation: character.lastKnownLocation, imageURL: character.imageURL, episodes: character.episodes, imageDownloadDate: Date())
-                }
+                self.characters[character.id] = Character(id: character.id, name: character.name, status: character.status, species: character.species, type: character.type, gender: character.gender, origin: character.origin, lastKnownLocation: character.lastKnownLocation, imageURL: character.imageURL, episodes: character.episodes, imageDownloadDate: Date())
                 updateFilteredCharacters()
             }
             catch {
@@ -130,69 +116,70 @@ class ViewModel {
             }
         }
     }
-
+    
     func getCharacters() async {
-        characters = []
+        characters = [:]
         filteredCharacters = []
         for await characterResponse in Cloud.sharedCloud.getCharactersStream() {
             let array = Character.characters(from: [characterResponse])
-            characters.append(contentsOf: array)
+            for character in array {
+                characters[character.id] = character
+            }
             updateFilteredCharacters()
-            callChangeHandlers()
         }
     }
     
     func getLocations() async {
-        locations = []
+        locations = [:]
         filteredLocations = []
         for await locationResponse in Cloud.sharedCloud.getLocationsStream() {
             let array = Location.locations(from: [locationResponse])
-            locations.append(contentsOf: array)
+            for location in array {
+                locations[location.id] = location
+            }
             updateFilteredLocations()
-            callChangeHandlers()
         }
     }
     
     func getEpisodes() async {
-        episodes = []
+        episodes = [:]
         filteredEpisodes = []
         for await episodeResponse in Cloud.sharedCloud.getEpisodesStream() {
             let array = Episode.episodes(from: [episodeResponse])
-            episodes.append(contentsOf: array)
+            for episode in array {
+                episodes[episode.id] = episode
+            }
             updateFilteredEpisodes()
-            callChangeHandlers()
         }
     }
+
     
     // MARK: Private Methods
     
     private func updateFilteredCharacters() {
-        if searchText.isEmpty {
-            filteredCharacters = characters
+        var array = characters.values.map { $0 }
+        if !searchText.isEmpty {
+            array = array.filter { $0.name.contains(searchText) }
         }
-        else {
-            filteredCharacters = characters.filter { $0.name.contains(searchText) }
-        }
+        filteredCharacters = array.sorted { $0.id < $1.id }
         callChangeHandlers()
     }
     
     private func updateFilteredLocations() {
-        if searchText.isEmpty {
-            filteredLocations = locations
+        var array = locations.values.map { $0 }
+        if !searchText.isEmpty {
+            array = array.filter { $0.name.contains(searchText) }
         }
-        else {
-            filteredLocations = locations.filter { $0.name.contains(searchText) }
-        }
+        filteredLocations = array.sorted { $0.id < $1.id }
         callChangeHandlers()
     }
     
     private func updateFilteredEpisodes() {
-        if searchText.isEmpty {
-            filteredEpisodes = episodes
+        var array = episodes.values.map { $0 }
+        if !searchText.isEmpty {
+            array = array.filter { $0.name.contains(searchText) }
         }
-        else {
-            filteredEpisodes = episodes.filter { $0.name.contains(searchText) }
-        }
+        filteredEpisodes = array.sorted { $0.id < $1.id }
         callChangeHandlers()
     }
     
