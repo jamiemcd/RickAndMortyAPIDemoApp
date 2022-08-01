@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class ViewModel {
     
     // MARK: Internal Properties
@@ -52,10 +53,8 @@ class ViewModel {
     }
     
     func callChangeHandlers() {
-        DispatchQueue.main.async {
-            for changeHandler in self.changeHandlers.values {
-                changeHandler()
-            }
+        for changeHandler in self.changeHandlers.values {
+            changeHandler()
         }
     }
     
