@@ -134,6 +134,10 @@ class CharactersViewController: UIViewController {
     }
     
     private func updateUI() {
+        if navigationItem.searchController?.searchBar.text != viewModel.searchText {
+            navigationItem.searchController?.searchBar.text = viewModel.searchText
+        }
+
         // First, determine if any Characters have changed their imageDownloadDate
         var characterIDsToUpdate: [Character.ID] = []
         let characters = viewModel.filteredCharacters

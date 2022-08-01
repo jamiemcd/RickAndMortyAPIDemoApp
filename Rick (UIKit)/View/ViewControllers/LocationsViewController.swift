@@ -108,6 +108,9 @@ class LocationsViewController: UIViewController {
     }
     
     private func updateUI() {
+        if navigationItem.searchController?.searchBar.text != viewModel.searchText {
+            navigationItem.searchController?.searchBar.text = viewModel.searchText
+        }
         var snapshot = NSDiffableDataSourceSnapshot<Section, Location.ID>()
         snapshot.appendSections([.main])
         snapshot.appendItems(viewModel.filteredLocations.map { $0.id })

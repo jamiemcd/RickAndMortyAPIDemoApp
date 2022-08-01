@@ -105,6 +105,9 @@ class EpisodesViewController: UIViewController {
     }
     
     private func updateUI() {
+        if navigationItem.searchController?.searchBar.text != viewModel.searchText {
+            navigationItem.searchController?.searchBar.text = viewModel.searchText
+        }
         var snapshot = NSDiffableDataSourceSnapshot<Section, Episode.ID>()
         snapshot.appendSections([.main])
         snapshot.appendItems(viewModel.filteredEpisodes.map { $0.id })
