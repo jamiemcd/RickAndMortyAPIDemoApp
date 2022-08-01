@@ -61,13 +61,13 @@ class MainViewController: UITabBarController {
         }
         
         let navigationController1 = UINavigationController(rootViewController: charactersViewController)
-        navigationController1.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(systemName: "person.3"), selectedImage: nil)
+        navigationController1.tabBarItem = UITabBarItem(title: "Characters", image: UIImage(systemName: "person.3.fill"), selectedImage: nil)
         
         let navigationController2 = UINavigationController(rootViewController: locationsViewController)
-        navigationController2.tabBarItem = UITabBarItem(title: "Locations", image: UIImage(systemName: "globe.americas"), selectedImage: nil)
+        navigationController2.tabBarItem = UITabBarItem(title: "Locations", image: UIImage(systemName: "globe.americas.fill"), selectedImage: nil)
         
         let navigationController3 = UINavigationController(rootViewController: episodesViewController)
-        navigationController3.tabBarItem = UITabBarItem(title: "Episodes", image: UIImage(systemName: "tv"), selectedImage: nil)
+        navigationController3.tabBarItem = UITabBarItem(title: "Episodes", image: UIImage(systemName: "tv.fill"), selectedImage: nil)
         
         viewControllers = [navigationController1, navigationController2, navigationController3]
                 
